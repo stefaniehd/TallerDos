@@ -106,11 +106,13 @@ public class FrmMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnAdivinarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdivinarActionPerformed
-        // TODO add your handling code here:
+        FrmAdivinar oAdivinar=new FrmAdivinar();
+        oAdivinar.setVisible(true);
     }//GEN-LAST:event_btnAdivinarActionPerformed
 
     private void btnMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatrizActionPerformed
-        // TODO add your handling code here:
+        FrmMatriz oMatriz=new FrmMatriz();
+        oMatriz.setVisible(true);
     }//GEN-LAST:event_btnMatrizActionPerformed
 
     /**

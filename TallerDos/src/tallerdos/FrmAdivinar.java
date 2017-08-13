@@ -40,7 +40,7 @@ public class FrmAdivinar extends javax.swing.JFrame {
         btnAdivinar = new javax.swing.JButton();
         txtRandom = new javax.swing.JPasswordField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         btnRandom.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
         btnRandom.setText("Random");
