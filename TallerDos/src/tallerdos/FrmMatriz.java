@@ -5,18 +5,61 @@ package tallerdos;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author Tefa-PC
  */
 public class FrmMatriz extends javax.swing.JFrame {
 
+    private int[][] matriz;
+    private int cinco;
+
     /**
      * Creates new form FrmMatriz
      */
     public FrmMatriz() {
         initComponents();
+        cinco=0;
+    }
+
+    private void crearMatriz() {
+        try {
+            int fila = Integer.parseInt(txtFilas.getText().trim());
+            int columna = Integer.parseInt(txtColumnas.getText().trim());
+            cinco=0;
+            matriz = new int[fila][columna];
+            llenar();
+        } catch (Exception e) {
+        }
+    }
+
+    private void llenar() {
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                int r = (int) (Math.random() * 20 + 1);
+                matriz[i][j] = r;
+                String random = String.valueOf(r);
+                if (random.charAt(0) == '5') {
+                    cinco++;
+                }
+            }
+        }
+        imprimir();
+    }
+
+    private void imprimir() {
+        String output = "";
+        for (int i = 0; i < matriz.length; i++) {
+            for (int j = 0; j < matriz[i].length; j++) {
+                output += matriz[i][j];
+                if (j != (matriz[i].length - 1)) {
+                    output += "|";
+                }
+            }
+            output += "\n";
+        }
+        txtMatriz.setText(output);
+        lbl5.setText(String.valueOf(cinco));
     }
 
     /**
@@ -28,21 +71,89 @@ public class FrmMatriz extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        txtFilas = new javax.swing.JTextField();
+        txtColumnas = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        btnMatriz = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtMatriz = new javax.swing.JTextArea();
+        lbl5 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtFilas.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+
+        txtColumnas.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel1.setText("Filas");
+
+        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        jLabel2.setText("Columnas");
+
+        btnMatriz.setFont(new java.awt.Font("Comic Sans MS", 0, 12)); // NOI18N
+        btnMatriz.setText("Crear Matriz");
+        btnMatriz.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMatrizActionPerformed(evt);
+            }
+        });
+
+        txtMatriz.setColumns(20);
+        txtMatriz.setRows(5);
+        jScrollPane1.setViewportView(txtMatriz);
+
+        lbl5.setText("Inician con 5: ");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel1)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(txtFilas, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(31, 31, 31)
+                                .addComponent(btnMatriz))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(147, 147, 147)
+                        .addComponent(lbl5)))
+                .addContainerGap(29, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtFilas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtColumnas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(btnMatriz))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lbl5)
+                .addContainerGap(31, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnMatrizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMatrizActionPerformed
+        crearMatriz();
+    }//GEN-LAST:event_btnMatrizActionPerformed
 
     /**
      * @param args the command line arguments
@@ -80,5 +191,13 @@ public class FrmMatriz extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnMatriz;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lbl5;
+    private javax.swing.JTextField txtColumnas;
+    private javax.swing.JTextField txtFilas;
+    private javax.swing.JTextArea txtMatriz;
     // End of variables declaration//GEN-END:variables
 }
